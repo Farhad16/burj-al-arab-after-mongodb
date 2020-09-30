@@ -9,7 +9,6 @@ require('dotenv').config()
 const MongoClient = require('mongodb').MongoClient;
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.neh82.mongodb.net/burjAllArab?retryWrites=true&w=majority`;
 
-console.log(process.env.DB_PASS);
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -19,7 +18,7 @@ const serviceAccount = require('./configs/burj-ala-arob-firebase-adminsdk-qnpw1-
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://burj-ala-arob.firebaseio.com"
+    databaseURL: process.env.FIRE_DB
 });
 
 
@@ -64,10 +63,6 @@ client.connect(err => {
     })
 });
 
-
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
 
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`)
