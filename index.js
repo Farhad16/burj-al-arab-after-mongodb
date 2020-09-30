@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
-const serviceAccount = require('./burj-ala-arob-firebase-adminsdk-qnpw1-5b375c7104.json');
+const serviceAccount = require('./configs/burj-ala-arob-firebase-adminsdk-qnpw1-5b375c7104.json');
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
